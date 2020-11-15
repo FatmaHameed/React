@@ -23,18 +23,7 @@ const getFriend = async() => {
       setLoading(true)
   };
 }
-  
-//   setLoading(true)
-//   return fetch('https://www.randomuser.me/api?results=1').then(res => res.json()).then(data => {
-//     console.log(data.results[0]);
-//     setFriend(data.results[0]);
-//     console.log(friend)
-//     setLoading(false);
-//   }).catch(err => {
-//     setError(true)
-//   setLoading(true)
-//   })
-// }
+
 return (
   <div>
     <h1>{console.log(friend.name.first)}</h1>
