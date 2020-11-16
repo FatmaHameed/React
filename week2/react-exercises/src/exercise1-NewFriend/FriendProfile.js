@@ -1,13 +1,14 @@
 import React from 'react';
 
-const FriendProfile = ({firstName, lastName, streetNo, streetName, city, state, country, emailAddress, phoneNum}) => {
+const FriendProfile = ({friend}) => {
+  const {name, location, email, phone} = friend
   return (
     <ul>
-      <li>Name: {firstName} {lastName}</li>
-      <li>Address: {streetNo}, {streetName}, {city}; {state}</li>
-      <li>Country: {country}</li>
-      <li>Email: {emailAddress}</li>
-      <li>Phone No.: {phoneNum}</li>
+      <li>Name: {name.first} {name.last}</li>
+      <li>Address: {location.street.number}, {location.street.name}, {location.city}; {location.state}</li>
+      <li>Country: {location.country}</li>
+      <li>Email: {email}</li>
+      <li>Phone Number: {phone}</li>
     </ul>
   )
 }

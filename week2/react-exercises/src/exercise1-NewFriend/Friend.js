@@ -16,7 +16,7 @@ const getFriend = async() => {
     console.log(data.results[0]);
     const dataObj = data.results[0];
     await setFriend(dataObj);
-    console.log(friend);
+    console.log("friends", friend);
     await setLoading(false)
 
   }
@@ -25,23 +25,15 @@ const getFriend = async() => {
       setLoading(true)
   };
 };
-// useEffect(() => getFriend(), []);
 
 return (
   <div>
-    {/* <h1>{console.log(friend.name.first)}</h1> */}
+    <h1>{console.log("return", friend)}</h1>
     <Button fetchedData ={getFriend}/>
     {isLoading && <p>Loading...</p> }
     { !hasError && <div> 
-    <FriendProfile firstName = {friend.name.first} 
-                  lastName = {friend.name.last} 
-                  streetNo = {friend.location.street.number} 
-                  streetName = {friend.location.street.name} 
-                  city={friend.location.city} 
-                  state = {friend.location.state} 
-                  country = {friend.location.country} 
-                  emailAddress = {friend.email} 
-                  phoneNum = {friend.phone}/>
+    { Object.keys(friend).length > 0 && <FriendProfile friend = {friend}/>}
+    
     </div>}
     { hasError && <p>Something went wrong</p> }
 </div>

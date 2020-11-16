@@ -7,12 +7,15 @@ import RandomJoke from './exercise3-RandomJoke/RandomJoke'
 function App() {
   return (
     <div className="App">
-      
-      <Friend />
-
-      <DogGallery/>
-
-      <RandomJoke/>
+      <div className="box">
+        <Friend />
+      </div>
+      <div className="box">
+        <DogGallery/>
+      </div>
+      <div className="box">
+        <RandomJoke/>
+      </div>
     </div>
     
   );
