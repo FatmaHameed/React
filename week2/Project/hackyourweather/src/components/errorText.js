@@ -6,7 +6,7 @@ const ErrorMessage = ({isError}) => {
   } else if (isError == 401) {
     return <div className="error"><p>Oops! Something Went Wrong</p></div>
   } else {
-  return <div className="error">{null}</div>
+  return <div>{null}</div>
   }
 }
 export default ErrorMessage;
