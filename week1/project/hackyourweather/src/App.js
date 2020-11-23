@@ -1,8 +1,7 @@
-import Title from './components/header'
+import Title from './components/Header'
 import './App.css';
-import WeatherBox from './components/weatherBoxes';
+import WeatherBox from './components/WeatherBoxes';
 
-const data = require('./city-weather.json');
 
 function App() {
   return (
@@ -12,5 +11,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

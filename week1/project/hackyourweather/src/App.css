@@ -32,4 +32,14 @@ h1 {
 .box h5 {
   padding-bottom: 20px;
   font-size: 1rem;
+};
+
+@media (max-width : 900px){
+  .App {
+    width: 100%;
+  }
+  .box {
+    width: 95%;
+  }
+
 }
