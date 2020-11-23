@@ -5,15 +5,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(5, 151, 236, 0.26);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.list {
+  flex-direction: column;
+  list-style: none; 
+  font-size: 1.2rem;
+  font-weight: bold;
+
+}
+.list li{
+  background-color: white;
+  padding: 10px 5px;
+  width: 40%;
+  margin: auto;
+  box-shadow: 2px 2px 2px 2px  rgb(11, 6, 43);
+  border-radius: 5px;
+}
 .guarantee {
   display: flex;
-  margin: 100px 5px;
+  margin: 20px;
+  box-shadow: 2px 2px 2px 2px grey;
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: rgb(83, 161, 250);
+}
+.guarantee div {
+  margin: 0px 5px;
+  box-shadow: 2px 2px 2px 2px  rgb(11, 6, 43);
+  padding: 40px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
 }
 .guarantee h1 {
   font-size: 1.5rem;
@@ -28,8 +55,26 @@ code {
   margin: 20px;
   box-shadow: 2px 2px 2px 2px grey;
   padding: 20px;
+  background-color: rgb(83, 161, 250);
+  border-radius: 10px;
+}
+.counter div {
+  box-shadow: 2px 2px 2px 2px rgb(11, 6, 43);
+  font-size: 1rem;
+  padding: 5px 20px ;
+  background-color: white;
+  border:  rgb(15, 4, 107);
+  width: 50%;
+  margin: auto;
+  border-radius: 5px;
 }
 .counter button {
-  box-shadow: 2px 2px 2px 2px grey;
+  box-shadow: 2px 2px 2px 2px rgb(11, 6, 43);
   font-size: 1rem;
+  padding: 5px 20px ;
+  background-color: rgb(15, 4, 107);
+  color: white;
+  border-radius: 5px;
+  border:  rgb(15, 4, 107);
+  margin: 5px 5px 15px;
 }
