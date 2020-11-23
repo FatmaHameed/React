@@ -1,8 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
-import HobbyList from './components/extremeHobbies';
-import Guarantee from './components/customerService';
-import Counter from './components/counting';
+import HobbyList from './components/ExtremeHobbies';
+import Guarantee from './components/CustomerService';
+import Counter from './components/Counting';
 
 function App() {
   return (

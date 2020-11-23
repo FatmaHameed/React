@@ -1,8 +1,8 @@
 import React from 'react';
+import shortid from 'shortid';
 
-function Hobbies(props) {
-  const hobbies = props.hobbies;
-  const listHobbies = hobbies.map((hobby) => <li>{hobby}</li>)
+function Hobbies({ hobbies }) {
+  const listHobbies = hobbies.map((hobby) => <li key={shortid.generate()}>{hobby}</li>)
   return (
     <ul>
       {listHobbies}
