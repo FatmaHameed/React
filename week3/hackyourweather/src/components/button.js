@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SearchDataButton = ({fetchData, cityName}) => {
+const SearchDataButton = ({fetchData, cityName, disabled, styleButton}) => {
   return <button 
   onClick={fetchData}
-  disabled={cityName.trim() === "" ? true : false}
-  style={{ cursor: cityName.trim() === ""? "not-allowed": "pointer"}}
+  disabled={disabled}
+  style={ styleButton}
 >Search</button>
 };
 export default SearchDataButton;

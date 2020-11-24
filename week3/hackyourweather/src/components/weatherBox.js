@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const WeatherBox = ({city, id, setCity}) => {
   function removeCityWeather (e) { 
@@ -7,13 +8,13 @@ const WeatherBox = ({city, id, setCity}) => {
      {return key !== id}))
 }
 
-const displayEachCity = city.map((city, key) =>
+const displayEachCity = city.map((city) =>
  {
   const{name, sys: {country}, weather: [{main}], weather: [{description}],weather: [{icon}], main: {temp_min}, main: {temp_max}, coord: {lat}, coord: {lon}} = city;
   const iconURL = `http://openweathermap.org/img/w/${icon}.png`;
   
   return (
-    <div className="box" key={key}> 
+    <div className="box" key={uuidv4()}> 
     <div className = "imageContainer">
     <img src={iconURL} alt={description}></img></div>
     <div>

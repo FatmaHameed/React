@@ -1,15 +1,15 @@
 import React, {useState}  from 'react';
-import WeatherBox from './weatherBox';
+import WeatherBox from './WeatherBox';
 import Spinner from './Spinner';
-import ErrorMessage from './errorText'
-import InputCity from './inputCity';
-import SearchDataButton from './button'
+import ErrorMessage from './ErrorText'
+import InputCity from './InputCity';
+import SearchDataButton from './Button'
 
 
 const Main= () => {
   const [city, setCity] = useState([]);
   const [cityName, setCityName] = useState('');
-   const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState({});
   let [key, setKey] = useState(0)
   const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY
@@ -36,6 +36,8 @@ const Main= () => {
     } 
   }
 const error = Object.keys(isError).length = 0;
+const disabled = cityName.trim() === "" ? true : false;
+const styleButton = { cursor: cityName.trim() === ""? "not-allowed": "pointer" };
   return (
     <div>
       <span className="flex">
@@ -43,7 +45,7 @@ const error = Object.keys(isError).length = 0;
       cityName={cityName}
       setCityName={setCityName}
       />
-      <SearchDataButton fetchData = {fetchData} cityName={cityName}/></span>
+      <SearchDataButton fetchData = {fetchData} cityName={cityName} disabled={disabled} styleButton={styleButton}/></span>
     {isLoading && <Spinner/>}
     {city.length > 0 &&  
     <WeatherBox 
