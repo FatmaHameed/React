@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchDataButton = ({fetchData, cityName, disabled, styleButton}) => {
+const SearchDataButton = ({fetchData, disabled, styleButton}) => {
   return <button 
   onClick={fetchData}
   disabled={disabled}

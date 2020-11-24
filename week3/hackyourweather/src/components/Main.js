@@ -29,7 +29,6 @@ const Main= () => {
       }
      await setCityName('');
     } catch (error) {
-    console.log(error);
     setError(error.message);
     setLoading(true);
     setLoading(false);
@@ -45,7 +44,7 @@ const styleButton = { cursor: cityName.trim() === ""? "not-allowed": "pointer" }
       cityName={cityName}
       setCityName={setCityName}
       />
-      <SearchDataButton fetchData = {fetchData} cityName={cityName} disabled={disabled} styleButton={styleButton}/></span>
+      <SearchDataButton fetchData = {fetchData} disabled={disabled} styleButton={styleButton}/></span>
     {isLoading && <Spinner/>}
     {city.length > 0 &&  
     <WeatherBox 
@@ -54,8 +53,6 @@ const styleButton = { cursor: cityName.trim() === ""? "not-allowed": "pointer" }
                 setCity={setCity}
     />}
     {!error && <ErrorMessage isError = {isError}/>}
-    <h1>{console.log("Here is the error", isError)}</h1>
-    <h1>{console.log("Here is the city array", city)}</h1>
     </div>)
 }
 export default Main; 
