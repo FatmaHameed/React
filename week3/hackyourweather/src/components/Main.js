@@ -1,62 +1,57 @@
-import React, {useState}  from 'react';
+import React, { useState } from 'react';
 import WeatherBox from './WeatherBox';
 import Spinner from './Spinner';
-import ErrorMessage from './ErrorText'
+import ErrorMessage from './ErrorText';
 import InputCity from './InputCity';
-import SearchDataButton from './Button'
+import SearchDataButton from './Button';
 
-
-const Main= () => {
+const Main = () => {
   const [city, setCity] = useState([]);
   const [cityName, setCityName] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState({});
-  let [key, setKey] = useState(0)
-  const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${API_KEY}&units=metric`
-  const fetchData = async() => {
+  let [key, setKey] = useState(0);
+  const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${API_KEY}&units=metric`;
+  const fetchData = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await fetch(url);
       const data = await response.json();
-        if (data.cod < 400) {
+      if (data.cod < 400) {
         setCity([...city, data]);
-        setKey(key++)
+        setKey(key++);
         setLoading(false);
-        setError({})
+        setError({});
       } else {
         throw Error(data.cod);
       }
-     await setCityName('');
+      await setCityName('');
     } catch (error) {
-    setError(error.message);
-    setLoading(true);
-    setLoading(false);
-    } 
-  }
-const error = Object.keys(isError).length = 0;
-const disabled = cityName.trim() === "" ? true : false;
-const styleButton = { cursor: cityName.trim() === ""? "not-allowed": "pointer" };
+      setError(error.message);
+      setLoading(true);
+      setLoading(false);
+    }
+  };
+  const error = (Object.keys(isError).length = 0);
+  const disabled = cityName.trim() === '' ? true : false;
+  const styleButton = {
+    cursor: cityName.trim() === '' ? 'not-allowed' : 'pointer',
+  };
   return (
     <div>
       <span className="flex">
-      <InputCity
-      cityName={cityName}
-      setCityName={setCityName}
-      />
-      <SearchDataButton fetchData = {fetchData} disabled={disabled} styleButton={styleButton}/></span>
-    {isLoading && <Spinner/>}
-    {city.length > 0 &&  
-    <WeatherBox 
-                city = {city}
-                id= {key}
-                setCity={setCity}
-    />}
-    {!error && <ErrorMessage isError = {isError}/>}
-    </div>)
-}
-export default Main; 
-
-
-
- 
+        <InputCity cityName={cityName} setCityName={setCityName} />
+        <SearchDataButton
+          fetchData={fetchData}
+          disabled={disabled}
+          styleButton={styleButton}
+        />
+      </span>
+      {isLoading && <Spinner />}
+      {city.length > 0 && <WeatherBox city={city} id={key} setCity={setCity} />}
+      {!error && <ErrorMessage isError={isError} />}
+    </div>
+  );
+};
+export default Main;
