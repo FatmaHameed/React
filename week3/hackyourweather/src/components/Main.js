@@ -4,23 +4,27 @@ import Spinner from './Spinner';
 import ErrorMessage from './ErrorText';
 import InputCity from './InputCity';
 import SearchDataButton from './Button';
+import { v4 as uuidv4 } from 'uuid';
 
 const Main = () => {
-  const [city, setCity] = useState([]);
+  const [cities, setCities] = useState([]);
   const [cityName, setCityName] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState({});
-  let [key, setKey] = useState(0);
+  let [componentKey, setKey] = useState(0);
+  let key = uuidv4();
+
   const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${API_KEY}&units=metric`;
+
   const fetchData = async () => {
     try {
       setLoading(true);
       const response = await fetch(url);
       const data = await response.json();
       if (data.cod < 400) {
-        setCity([...city, data]);
-        setKey(key++);
+        setCities([...cities, data]);
+        setKey(componentKey++);
         setLoading(false);
         setError({});
       } else {
@@ -38,6 +42,14 @@ const Main = () => {
   const styleButton = {
     cursor: cityName.trim() === '' ? 'not-allowed' : 'pointer',
   };
+  function removeCityWeather(id) {
+    const newCityArray = [...cities];
+    setCities(
+      newCityArray.filter((newCity, index) => {
+        return index !== id;
+      }),
+    );
+  }
   return (
     <div>
       <span className="flex">
@@ -49,9 +61,22 @@ const Main = () => {
         />
       </span>
       {isLoading && <Spinner />}
-      {city.length > 0 && <WeatherBox city={city} id={key} setCity={setCity} />}
+
+      {cities.length > 0 && (
+        <div key={key}>
+          {cities.map((city, i) => (
+            <WeatherBox
+              key={+new Date() + Math.random()}
+              city={city}
+              id={i}
+              removeCityWeather={removeCityWeather}
+            />
+          ))}
+        </div>
+      )}
       {!error && <ErrorMessage isError={isError} />}
     </div>
   );
 };
+
 export default Main;
