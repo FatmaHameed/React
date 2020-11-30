@@ -4,15 +4,12 @@ import Spinner from './Spinner';
 import ErrorMessage from './ErrorText';
 import InputCity from './InputCity';
 import SearchDataButton from './Button';
-import { v4 as uuidv4 } from 'uuid';
 
 const Main = () => {
   const [cities, setCities] = useState([]);
   const [cityName, setCityName] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState({});
-  let [componentKey, setKey] = useState(0);
-  let key = uuidv4();
 
   const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${API_KEY}&units=metric`;
@@ -24,7 +21,7 @@ const Main = () => {
       const data = await response.json();
       if (data.cod < 400) {
         setCities([...cities, data]);
-        setKey(componentKey++);
+
         setLoading(false);
         setError({});
       } else {
@@ -63,7 +60,7 @@ const Main = () => {
       {isLoading && <Spinner />}
 
       {cities.length > 0 && (
-        <div key={key}>
+        <div key={+new Date() + Math.random()}>
           {cities.map((city, i) => (
             <WeatherBox
               key={+new Date() + Math.random()}
